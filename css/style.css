@@ -1,0 +1,6 @@
+.menu-container {
+  display: flex;
+  flex-direction: row;
+  background-color: pink; }
+  .menu-container .list {
+    background-color: pink; }
