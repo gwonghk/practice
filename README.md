@@ -1,0 +1,3 @@
+# practice
+
+Vanilla js exercises
