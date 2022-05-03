@@ -95,3 +95,28 @@ export const mergeSort = (arr) => {
 
   return mergeArr(mergeSort(leftArr), mergeSort(rightArr));
 };
+
+export const makeReq = ({ method, url }) => {
+  const promise = new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open(method, url, true);
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        resolve(xhr.response);
+      } else {
+        reject(new Error({
+          status: xhr.status,
+          statusText: xhr.statusText,
+        }));
+      }
+    };
+    xhr.onerror = () => {
+      reject(new Error({
+        status: xhr.status,
+        statusText: xhr.statusText,
+      }));
+    };
+    xhr.send();
+  });
+  return promise;
+};
